@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../../src/App.css"
 const Navbar = () => {
   const [profile, setProfile] = useState(false);
   const [show, setShow] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = () => {
       <nav className="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-10">
         <div className="hidden lg:flex w-full pr-6">
           <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
-            <div className="relative w-full">
+            <div className="relative w-50">
               <div className="text-gray-500 absolute ml-4 inset-0 m-auto w-4 h-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +94,7 @@ const Navbar = () => {
               >
                 <div className="rounded-full">
                   {profile ? (
-                    <ul className="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 ">
+                    <ul className="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-5 sm:mt-16 ">
                       <li className="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
                         <div className="flex items-center">
                           <svg
@@ -147,13 +148,10 @@ const Navbar = () => {
                   ) : (
                     ''
                   )}
-                  <div className="relative">
-                    <img
-                      className="rounded-full h-10 w-10 object-cover"
-                      src="https://tuk-cdn.s3.amazonaws.com/assets/components/sidebar_layout/sl_1.png"
-                      alt="avatar"
-                    />
-                    <div className="w-2 h-2 rounded-full bg-green-400 border border-white absolute inset-0 mb-0 mr-0 m-auto" />
+                  <div className="relative mx-2">
+              
+                    <i class="fa-solid fa-user"></i>
+                  
                   </div>
                 </div>
                 <p className="text-gray-800 text-sm mx-3">{user.name}</p>

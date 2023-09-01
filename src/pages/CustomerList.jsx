@@ -54,8 +54,12 @@ export default function CustomersList() {
           {el.name}
         </th>
         <td className="px-6 py-4">{el.email}</td>
-        <td className="px-6 py-4">{el.password}</td>
         <td className="px-6 py-4">{el.img}</td>
+        <td className="px-6 py-4">{el.orders[el.orders.length-1]}</td>
+       
+
+
+
         <td className="px-6 py-4 flex gap-2">
           <Link
             to={`${el._id}`}
@@ -76,7 +80,7 @@ export default function CustomersList() {
   return (
     <div className="w-full h-full bg-gray-200">
       <div className="flex flex-no-wrap">
-      <Aside/>
+        <Aside />
         <div className="p-4  w-full">
           <Link to="/add">
             <button
@@ -96,10 +100,14 @@ export default function CustomersList() {
                   <th scope="col" className="px-6 py-3">
                     <div className="flex items-center">Email</div>
                   </th>
-                  <th scope="col" className="px-6 py-3"></th>
                   <th scope="col" className="px-6 py-3">
-                    <div className="flex items-center">Password</div>
+                    {' '}
+                    <div className="flex items-center">Image</div>
                   </th>
+                  <th scope="col" className="px-6 py-3">
+                    <div className="flex items-center">last orders</div>
+                  </th>
+           
                   <th scope="col" className="px-6 py-3">
                     <span className="flex items-center">Action</span>
                   </th>
