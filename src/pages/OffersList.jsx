@@ -3,13 +3,6 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Aside from '../components/Aside';
 export default function OffersList() {
-  // const id = sessionStorage.getItem("vendorId");
-  // const nav = useNavigate();
-
-  // if (!id) {
-  //   nav("/");
-  // }
-  // this for save product from Api
   const [offers, setOffers] = useState([]);
 
   //   here i will fetch data from Api and store them in state
@@ -47,15 +40,13 @@ export default function OffersList() {
         key={el._id}
         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
       >
-        <th
-          scope="row"
-          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          {el.name}
-        </th>
+  
         <td className="px-6 py-4">{el._id}</td>
+        <td className="px-6 py-4">{el.itemOffered}</td>
+        <td className="px-6 py-4">{el.priceValidStart}</td>
+        <td className="px-6 py-4">{el.priceValidUntil}</td>
         <td className="px-6 py-4">{el.price}</td>
-        <td className="px-6 py-4">{el.img}</td>
+        <td className="px-6 py-4">{el.imgUrl}</td>
         <td className="px-6 py-4 flex gap-2">
           <Link
             to={`${el._id}`}
@@ -78,12 +69,12 @@ export default function OffersList() {
       <div className="flex flex-no-wrap">
       <Aside/>
         <div className="p-4  w-full">
-          <Link to="/add">
+          <Link to="/addOffer">
             <button
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Add New User
+              Add New Offer
             </button>
           </Link>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -91,14 +82,22 @@ export default function OffersList() {
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">
-                    User name
+                    Offer Number
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    <div className="flex items-center">Email</div>
+                    <div className="flex items-center">Service Name</div>
                   </th>
-                  <th scope="col" className="px-6 py-3"></th>
                   <th scope="col" className="px-6 py-3">
-                    <div className="flex items-center">Password</div>
+                    <div className="flex items-center">Offer start Date</div>
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    <div className="flex items-center">Offer Due Date</div>
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    <div className="flex items-center">Offer Price</div>
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    <div className="flex items-center">Offer Image</div>
                   </th>
                   <th scope="col" className="px-6 py-3">
                     <span className="flex items-center">Action</span>
