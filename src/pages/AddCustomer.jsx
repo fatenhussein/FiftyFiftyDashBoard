@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Aside from '../components/Aside';
 export default function AddCustomer() {
   // const id = sessionStorage.getItem("vendorId");
   // const nav = useNavigate();
@@ -35,8 +36,14 @@ export default function AddCustomer() {
   };
 
   return (
-    <>
-      <div className="  mb-6 p-4 sm:ml-64 grid justify-center items-center h-screen">
+    <div className="w-full h-full bg-gray-200">
+    <div className="flex  flex-no-wrap">
+
+      <Aside/>
+      <div className="flex justify-center items-center w-full flex-no-wrap">
+
+    
+      <div className=" mb-2 p-4  grid justify-center items-center bg-[white]  h-[500px] mt-[20px] border border-[black] rounded">
         <div>
           <label
             htmlFor="default-input"
@@ -84,6 +91,20 @@ export default function AddCustomer() {
             htmlFor="default-input"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
+            confirmed password:
+          </label>
+          <input
+            onChange={handleInputChange}
+            name="password"
+            type="password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="default-input"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
             Image
           </label>
           <input
@@ -93,34 +114,7 @@ export default function AddCustomer() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
-        {/* <div>
-          <label
-            htmlFor="default-input"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Quantity:
-          </label>
-          <input
-            onChange={handleInputChange}
-            name="quantity"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
-        <div> */}
-        {/* <label
-            htmlFor="default-input"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Price:
-          </label>
-          <input
-            onChange={handleInputChange}
-            name="price"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
+
         <button
           onClick={handelSubmit}
           type="button"
@@ -129,6 +123,8 @@ export default function AddCustomer() {
           Add Product
         </button>
       </div>
-    </>
+    </div>
+    </div>
+    </div>
   );
 }

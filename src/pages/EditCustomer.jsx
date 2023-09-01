@@ -50,10 +50,11 @@ export default function EditCustomer() {
 
   return (
     <div className="w-full h-full bg-gray-200">
-    <div className="flex flex-no-wrap">
+    <div className="flex  flex-no-wrap">
 
       <Aside/>
-      <div className="  mb-6 p-4 sm:ml-64 grid justify-center items-center h-screen">
+      <div className="flex justify-center items-center w-full flex-no-wrap">
+      <div className="  mb-2 p-4  grid justify-center items-center bg-[white]  h-[500px] mt-[20px] border border-[black] rounded ">
         <div>
           <label
             htmlFor="name"
@@ -152,6 +153,7 @@ export default function EditCustomer() {
           Submit
         </button>
       </div>
+    </div>
     </div>
     </div>
   );
