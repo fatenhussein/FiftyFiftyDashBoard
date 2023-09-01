@@ -4,16 +4,11 @@ import axios from 'axios';
 import Aside from '../components/Aside';
 
 export default function EditOrder() {
-  // const backNav = useNavigate();
-  // const vendorId = sessionStorage.getItem("vendorId");
 
-  // if (!vendorId) {
-  //   backNav("/");
-  // }
   const { id } = useParams();
   const [order, setOrder] = useState({});
   //
-  console.log(id);
+
 
   //   this for send request one time when open page
   useEffect(() => {
@@ -36,12 +31,13 @@ export default function EditOrder() {
   };
   //
   const handelSubmit = async () => {
+    
     try {
-      const updatedCustomer = await axios.patch(
+      const updatedOrder = await axios.patch(
         `http://127.0.0.1:2000/api/v1/orders/${id}`,
        order
       );
-      console.log('Product update successfully', updatedCustomer);
+      console.log('Product update successfully', updatedOrder);
       // backNav("/home");
     } catch (err) {
       console.log(err);
@@ -53,97 +49,24 @@ export default function EditOrder() {
     <div className="flex flex-no-wrap">
 
       <Aside/>
-      <div className="  mb-6 p-4 sm:ml-64 grid justify-center items-center h-screen">
+      <div className="flex justify-center items-center w-full flex-no-wrap">
+      <div className="  mb-2 p-4  grid justify-center items-center bg-[white]  h-[200px]  border border-[black] rounded">
         <div>
           <label
-            htmlFor="name"
+            htmlFor="orderStatus"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Name:
+            Status:
           </label>
           <input
             onChange={handleInputChange}
             value={order.orderStatus}
-            name="name"
+            name="orderStatus"
             type="text"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
-        {/* <div>
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            status
-          </label>
-          <input
-            value={order.orderStatus}
-            onChange={handleInputChange}
-            name="email"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
-        {/* <div>
-          <label
-            htmlFor="password"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Password
-          </label>
-          <input
-            onChange={handleInputChange}
-            value={customer.password}
-            name="password"
-            type="password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
-        {/* <div>
-          <label
-            htmlFor="img"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Image
-          </label>
-          <input
-            onChange={handleInputChange}
-            value={customer.img}
-            name="img"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
-        {/* <div>
-          <label
-            htmlFor="qu"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Quantity:
-          </label>
-          <input
-            onChange={handleInputChange}
-            value={products.quantity}
-            name="quantity"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
-        {/* <div>
-          <label
-            htmlFor="price"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Price:
-          </label>
-          <input
-            onChange={handleInputChange}
-            value={products.price}
-            name="price"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div> */}
+        
         <button
           onClick={handelSubmit}
           type="button"
@@ -152,6 +75,7 @@ export default function EditOrder() {
           Submit
         </button>
       </div>
+    </div>
     </div>
     </div>
   );
