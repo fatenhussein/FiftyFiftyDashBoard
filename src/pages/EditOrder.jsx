@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Aside from '../components/Aside';
-
+import Swal from 'sweetalert2';
 export default function EditOrder() {
 
   const { id } = useParams();
@@ -39,7 +39,19 @@ export default function EditOrder() {
       );
       console.log('Product update successfully', updatedOrder);
       // backNav("/home");
-    } catch (err) {
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'order updated successfully!'
+      });    } catch (err) {
+
+                         // Display an error alert
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'There was an error adding the customer.'
+    });
       console.log(err);
     }
   };
@@ -58,13 +70,19 @@ export default function EditOrder() {
           >
             Status:
           </label>
-          <input
-            onChange={handleInputChange}
-            value={order.orderStatus}
-            name="orderStatus"
-            type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <select
+  onChange={handleInputChange}
+  value={order.orderStatus}
+  name="orderStatus"
+  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+>
+  {['pending', 'shipped', 'delivered'].map((status) => (
+    <option key={status} value={status}>
+      {status}
+    </option>
+  ))}
+</select>
+
         </div>
         
         <button

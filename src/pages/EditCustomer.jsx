@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Aside from '../components/Aside';
-
+import Swal from 'sweetalert2';
 export default function EditCustomer() {
   // const backNav = useNavigate();
   // const vendorId = sessionStorage.getItem("vendorId");
@@ -24,7 +24,10 @@ export default function EditCustomer() {
         );
         console.log(response.data.customer);
         setCustomer(response.data.customer);
+   
       } catch (err) {
+
+ 
         console.log(err);
       }
     };
@@ -43,7 +46,19 @@ export default function EditCustomer() {
       );
       console.log('Product update successfully', updatedCustomer);
       // backNav("/home");
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Customer added successfully!'
+      });
     } catch (err) {
+                       // Display an error alert
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'There was an error updated the customer.'
+    });
       console.log(err);
     }
   };

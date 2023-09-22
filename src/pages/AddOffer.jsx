@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Aside from '../components/Aside';
+import Swal from 'sweetalert2';
+
 export default function AddOffer() {
   // const id = sessionStorage.getItem("vendorId");
   // const nav = useNavigate();
@@ -21,14 +23,26 @@ export default function AddOffer() {
   // console.log(productData);
   const handelSubmit = async () => {
     try {
-      console.log('as');
       // vendor id by session storage
       const newOffer = await axios.post('http://127.0.0.1:2000/api/v1/offers', {
         ...offerData,
       });
-      console.log('Product add successfully', newOffer);
+      console.log('offer add successfully', newOffer);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Offer added successfully!'
+      });
     } catch (err) {
       console.log(err);
+
+                // Display an error alert
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'There was an error adding the customer.'
+    });
     }
   };
 
@@ -38,20 +52,6 @@ export default function AddOffer() {
         <Aside />
         <div className="flex justify-center items-center w-full flex-no-wrap">
           <div className=" mb-2 p-4  grid justify-center items-center bg-[white]  h-[570px] mt-[20px] border border-[black] rounde">
-            <div>
-              <label
-                htmlFor="default-input"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                  Offer Number: 
-              </label>
-              <input
-                onChange={handleInputChange}
-                name="name"
-                type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              />
-            </div>
             <div>
               <label
                 htmlFor="default-input"
@@ -71,12 +71,12 @@ export default function AddOffer() {
                 htmlFor="default-input"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-              Offer Start Date:
+                Offer Start Date:
               </label>
               <input
                 onChange={handleInputChange}
-                name="itemOffered"
-                type="text"
+                name="priceValidUntil"
+                type="date"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -85,12 +85,12 @@ export default function AddOffer() {
                 htmlFor="default-input"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-              Offer Due Date:
+                Offer Due Date:
               </label>
               <input
                 onChange={handleInputChange}
-                name="itemOffered"
-                type="text"
+                name="priceValidStart"
+                type="date"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -99,7 +99,7 @@ export default function AddOffer() {
                 htmlFor="default-input"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-               Offer Price
+                Offer Price
               </label>
               <input
                 onChange={handleInputChange}
@@ -113,11 +113,11 @@ export default function AddOffer() {
                 htmlFor="default-input"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-               Offer Image
+                Offer Image
               </label>
               <input
                 onChange={handleInputChange}
-                name="img"
+                name="imgUrl"
                 type="text"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />

@@ -23,7 +23,7 @@ export default function OffersList() {
   }, []);
 
   // here  handel if vendor want to remove product
-  const removeCutomer = async (id) => {
+  const removeOffer = async (id) => {
     try {
       await axios.delete(`http://127.0.0.1:2000/api/v1/offers/${id}`);
 
@@ -55,7 +55,7 @@ export default function OffersList() {
             Edit
           </Link>
           <p
-            onClick={() => removeCutomer(el._id)}
+            onClick={() => removeOffer(el._id)}
             className="font-medium text-red-600 dark:text-red-500 hover:underline  cursor-pointer"
           >
             Remove

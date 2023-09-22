@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Aside from '../components/Aside';
+import Swal from 'sweetalert2';
+
 export default function AddCustomer() {
   // const id = sessionStorage.getItem("vendorId");
   // const nav = useNavigate();
@@ -29,11 +31,25 @@ export default function AddCustomer() {
           ...customerData,
         }
       );
-      console.log('Product add successfully', newCustomer);
+      console.log('customer  added successfully', newCustomer);
+       // Display a success alert
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Customer added successfully!'
+    });
     } catch (err) {
+
+          // Display an error alert
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'There was an error adding the customer.'
+    });
       console.log(err);
     }
   };
+
 
   return (
     <div className="w-full h-full bg-gray-200">
