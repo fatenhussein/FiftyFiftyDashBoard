@@ -20,7 +20,9 @@ const Navbar = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
+ // <- Added id to the dependency array
+  
   if (!id) {
     return (
       <nav className="h-16 flex items-center justify-end bg-white shadow relative z-10">
