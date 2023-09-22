@@ -19,7 +19,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<IndexPage />} />
+      <Route path="/" element={<Login />} />
+        <Route path="/home" element={<IndexPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/customers" element={<CustomerList />} />
         <Route path="/customers/:id" element={<EditCustomer />} />

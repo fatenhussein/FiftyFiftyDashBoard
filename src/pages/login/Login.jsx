@@ -24,7 +24,7 @@ const Login = () => {
       console.log(res);
       sessionStorage.setItem('currentUser', res.data.token);
       sessionStorage.setItem('currentUserId', res.data.id);
-      loginNav('/');
+      loginNav('/home');
     } catch (err) {
       console.log(err);
       Swal.fire('invalid password or email ');

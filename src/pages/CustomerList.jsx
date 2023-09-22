@@ -81,7 +81,7 @@ export default function CustomersList() {
     <div className="w-full h-full bg-gray-200">
       <div className="flex flex-no-wrap">
         <Aside />
-        <div className="p-4  w-full">
+        <div className="p-4  w-full ">
           <Link to="/addCustomer">
             <button
               type="button"
@@ -91,7 +91,7 @@ export default function CustomersList() {
             </button>
           </Link>
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-auto h-full ">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">
